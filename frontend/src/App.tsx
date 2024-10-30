@@ -1,10 +1,12 @@
 import { createTheme, MantineProvider } from "@mantine/core";
 import { RouterProvider } from "react-router-dom";
+import { Notifications } from '@mantine/notifications';
 import router from "./routes";
 
 export default function App() {
   return (
     <MantineProvider theme={theme}>
+      <Notifications />
       <RouterProvider router={router} />
     </MantineProvider>
   );
