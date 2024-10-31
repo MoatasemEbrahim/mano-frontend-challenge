@@ -1,6 +1,7 @@
 import { FC, useState, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { Button } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import { IconPlayerPlayFilled } from '@tabler/icons-react';
 import { IClaimRecord } from '../../../types/claim';
 import { columnDefs } from './columns';
@@ -15,6 +16,20 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
   const [isClaimsApproved, setIsClaimsApproved] = useState<boolean>(false);
   const gridRef = useRef(null);
 
+  const handleApproveClick = () => {
+    const selectedRows = gridRef.current.api.getSelectedRows();
+    if (selectedRows.length === 0) {
+      showNotification({
+        title: 'Warning',
+        message: 'No claims selected',
+        variant: 'warning',
+        color: "orange"
+      })
+      return;
+    }
+    setIsClaimsApproved(true);
+  }
+
   const handleGenerateFilesClick = () => {
     const selectedRows = gridRef.current.api.getSelectedRows();
     console.log(selectedRows)
@@ -24,7 +39,7 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
 
   return (
     <div>
-      <p className='text-base font-medium text-lime-800 mt-6'>By default, all records are approved. Deselect the record you want to decline.</p>
+      <p className='text-base font-medium text-lime-800 mt-6'>Please select claims to approve:</p>
       <div className='ag-theme-quartz w-full h-[calc(100vh-380px)] sm:h-[calc(100vh-300px)] mt-1 relative'>
         {isClaimsApproved && (
           <div className='absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 blur-sm bg-gray-500 z-10'/>
@@ -37,7 +52,6 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
           rowSelection={{ mode: "multiRow" }}
           pagination={true}
           paginationPageSize={50}
-          onFirstDataRendered={onFirstDataRendered}
         />
       </div>
       <div className="flex gap-6 mt-4">
@@ -60,7 +74,7 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
           </>
         ):(
           <Button
-            onClick={() => {setIsClaimsApproved(true)}}
+            onClick={handleApproveClick}
             disabled={false}
             variant="light" 
             color="indigo"
@@ -71,14 +85,6 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
       </div>
     </div>
   )
-};
-
-const onFirstDataRendered = (params) => {
-  const nodesToSelect = [];
-  params.api.forEachNode((node) => {
-    nodesToSelect.push(node);
-  });
-  params.api.setNodesSelected({ nodes: nodesToSelect, newValue: true });
 };
 
 export default ClaimsTable;
