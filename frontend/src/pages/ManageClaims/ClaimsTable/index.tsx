@@ -5,16 +5,17 @@ import { showNotification } from '@mantine/notifications';
 import { IconPlayerPlayFilled } from '@tabler/icons-react';
 import { IClaimRecord } from '../../../types/claim';
 import { columnDefs } from './columns';
+import { useGenerateMRFFiles } from '../../../hooks/useGenerateMRFFiles';
 
 interface IClaimsTableProps {
   claims: IClaimRecord[];
-  isLoading: boolean;
 }
 
-const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
+const ClaimsTable: FC<IClaimsTableProps> = ({ claims }) => {
 
   const [isClaimsApproved, setIsClaimsApproved] = useState<boolean>(false);
   const gridRef = useRef(null);
+  const { generateFiles, loading } = useGenerateMRFFiles();
 
   const handleApproveClick = () => {
     const selectedRows = gridRef.current.api.getSelectedRows();
@@ -30,11 +31,9 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
     setIsClaimsApproved(true);
   }
 
-  const handleGenerateFilesClick = () => {
+  const handleGenerateFilesClick = async () => {
     const selectedRows = gridRef.current.api.getSelectedRows();
-    console.log(selectedRows)
-    // map records and send to BE to generate files
-    // navigate to MRF files listing route on success
+    generateFiles(selectedRows);
   }
 
   return (
@@ -65,11 +64,11 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims, isLoading }) => {
             </Button>
             <Button
               onClick={handleGenerateFilesClick}
-              disabled={false}
+              disabled={loading}
               color='indigo'
-              rightSection={isLoading ? null : <IconPlayerPlayFilled size={14} />}
+              rightSection={loading ? null : <IconPlayerPlayFilled size={14} />}
             >
-              {isLoading ? 'Generating MRF...' : 'Generate MRF'}
+              {loading ? 'Generating MRF...' : 'Generate MRF'}
             </Button>
           </>
         ):(

@@ -20,7 +20,7 @@ const publicRoutesWithoutLayout = [
 
 const publicRoutesWithLayout = [
   {
-    path: "/list-mrf-files",
+    path: "/mrf-files",
     element: <ListMRFFiles />,
   }
 ];

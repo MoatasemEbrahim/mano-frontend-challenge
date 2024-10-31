@@ -20,7 +20,7 @@ const ManageClaims = () => {
       </div>
       <ClaimUploadErrors errors={errors} />
       {uploadedClaims.length > 0 && (
-        <ClaimsTable claims={uploadedClaims} isLoading={false} />
+        <ClaimsTable claims={uploadedClaims} />
       )}
     </div>
   )
