@@ -21,7 +21,7 @@ const Login = observer(() => {
   };
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen flex flex-col">
       <div className="w-full p-4 shadow-md">
         <Logo />
       </div>

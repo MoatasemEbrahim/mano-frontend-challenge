@@ -34,6 +34,6 @@ export const creatMRF = async (ctx: Context) => {
 
     return ctx.json({ message: 'Data saved successfully' });
   } catch (error: unknown) {
-    return ctx.json({ error: error }, 400);
+    return ctx.json({ error: "Something went wrong" }, 400);
   }
 }

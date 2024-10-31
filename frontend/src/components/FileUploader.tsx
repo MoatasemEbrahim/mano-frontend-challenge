@@ -38,24 +38,26 @@ const FileUploader: FC<IFileUploaderProps> = ({
 
   return (
     <div className="p-3 my-2 flex flex-col items-start rounded-lg border-[1px] border-x-stone-300">
-      <div className='flex items-center gap-4 w-full flex-wrap'>
-        <Group justify="center">
-          <FileButton 
-            disabled={disabled}
-            onChange={handleFileChange}
-            accept={allowedFormats.join(",")}
-          >
-            {(props) => <Button {...props} variant='default'>{selectButtonLabel}</Button>}
-          </FileButton>
-        </Group>
-        {file && (
-          <Text size="md">
-            Selected file: <b>{file.name}</b>
-          </Text>
-        )}
+      <div className='flex flex-col sm:flex-row items-center gap-5 w-full flex-wrap'>
+        <div className='flex gap-2 sm:gap-4 flex-wrap me-auto'>
+          <Group justify="center">
+            <FileButton 
+              disabled={disabled}
+              onChange={handleFileChange}
+              accept={allowedFormats.join(",")}
+            >
+              {(props) => <Button {...props} variant='default'>{selectButtonLabel}</Button>}
+            </FileButton>
+          </Group>
+          {file && (
+            <Text size="md">
+              Selected file: <b>{file.name}</b>
+            </Text>
+          )}
+        </div>
         <Button
           disabled={disabled || !file}
-          className='ms-auto'
+          className='me-auto sm:me-0 sm:ms-auto '
           rightSection={<IconUpload size={14} />}
           onClick={handleUploadButtonClick}
         >

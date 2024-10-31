@@ -39,7 +39,7 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims }) => {
   return (
     <div>
       <p className='text-base font-medium text-lime-800 mt-6'>Please select claims to approve:</p>
-      <div className='ag-theme-quartz w-full h-[calc(100vh-380px)] sm:h-[calc(100vh-300px)] mt-1 relative'>
+      <div className='ag-theme-quartz w-full h-[calc(100vh-400px)] sm:h-[calc(100vh-300px)] mt-1 relative'>
         {isClaimsApproved && (
           <div className='absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 blur-sm bg-gray-500 z-10'/>
         )}
@@ -53,7 +53,7 @@ const ClaimsTable: FC<IClaimsTableProps> = ({ claims }) => {
           paginationPageSize={50}
         />
       </div>
-      <div className="flex gap-6 mt-4">
+      <div className="flex gap-6 mt-5">
         {isClaimsApproved ? (
           <>
             <Button

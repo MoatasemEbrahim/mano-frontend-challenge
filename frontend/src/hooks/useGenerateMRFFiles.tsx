@@ -50,5 +50,3 @@ export const useGenerateMRFFiles = () => {
     loading: isGeneratingFiles,
   }
 }
-
-export default useGenerateMRFFiles

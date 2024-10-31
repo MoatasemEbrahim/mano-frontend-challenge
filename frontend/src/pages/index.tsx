@@ -7,7 +7,7 @@ export default function MainPage() {
         <h4 className="text-4xl">Welcome to Mano health</h4>
         <div className="flex flex-col justify-center gap-2 flex-wrap w-full">
           <Link to="/manage-claims" className="text-lg underline">Manage Claims</Link>
-          <Link to="/list-mrf-files" className="text-lg underline">List MRf Files</Link>
+          <Link to="/mrf-files" className="text-lg underline">List MRf Files</Link>
         </div>
       </div>
     </div>
