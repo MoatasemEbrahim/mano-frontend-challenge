@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import { useStore } from "../stores/StoreContext";
 
-interface IProtectedRouteProps {
-  isAuthenticated: boolean
-}
-const ProtectedRoute = ({ isAuthenticated }:IProtectedRouteProps) => {
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+const ProtectedRoute = observer(() => {
+  const { authStore } = useStore();
+  return authStore.isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
   
-}
+})
 
 export default ProtectedRoute;

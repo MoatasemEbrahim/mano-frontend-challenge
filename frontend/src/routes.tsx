@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         children: publicRoutesWithLayout
       },
       {
-        element: <ProtectedRoute isAuthenticated={true} />,
+        element: <ProtectedRoute />,
         children: [
           {
             element: <BasicLayout />,
