@@ -13,9 +13,12 @@ dependencies:
   '@tabler/icons-react':
     specifier: ^3.21.0
     version: 3.21.0(react@18.3.1)
+  ag-grid-community:
+    specifier: ^32.3.2
+    version: 32.3.2
   ag-grid-react:
-    specifier: ^32.3.1
-    version: 32.3.1(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^32.3.2
+    version: 32.3.2(react-dom@18.3.1)(react@18.3.1)
   papaparse:
     specifier: ^5.4.1
     version: 5.4.1
@@ -1081,19 +1084,19 @@ packages:
     resolution: {integrity: sha512-oZvu9vJLk6lmzaYi0TmVVmHFZJpVNFziU0bnllx4wR3muXCmnxz5LouKIZ8CYnNiC7VO5HmHNlFu+0DmEO5zxg==}
     dev: false
 
-  /ag-grid-community@32.3.1:
-    resolution: {integrity: sha512-j/VpFbDO+7tDNG5xq9JIg3zSYxKbTKlAYjaAFSUwiJF8SDyWYUALWjtiCa+mr/RowyGRTcFv5sc+HCbS6C4UKQ==}
+  /ag-grid-community@32.3.2:
+    resolution: {integrity: sha512-ZrgS7+F0JKV6+sy7VQdt+9xhOJd6TAnXXEmw20ByG6AZdcIDEKBRHW7TfNwUqisXJjGKoaXnYByuMz7rL9PcPg==}
     dependencies:
       ag-charts-types: 10.3.1
     dev: false
 
-  /ag-grid-react@32.3.1(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-5xd9LGiJHghbb7KwlqzayJ+7Ot+kYXcBwwZan0cT2xtVHpJi9sz//PoWGzBILhxX707ocXz0ICsEyErAa+8WWw==}
+  /ag-grid-react@32.3.2(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-jKYiqf2KJI3foIcJHwRzK6ZddXGX3nkxV16aRnOUm9DzFzHKTrgdfxKS+zvhS0TzlkmqRGmq3M4WEgPcuHZH9A==}
     peerDependencies:
-      react: ^16.3.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     dependencies:
-      ag-grid-community: 32.3.1
+      ag-grid-community: 32.3.2
       prop-types: 15.8.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

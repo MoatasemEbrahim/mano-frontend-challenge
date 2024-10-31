@@ -12,6 +12,7 @@ const DateSchema = z.string().regex(dateRegex, {
   message: 'Date must be in the format YYYY-MM-DD',
 });
 
+// TODO(enhancement): build more tight schema for better validation like checking the Claim Status from an enum, etc...
 export const ClaimSchema = z.object({
   "Claim ID": StringifiedNumberSchema,
   "Subscriber ID": z.string(),

@@ -1,22 +1,16 @@
 import Papaparse from "papaparse";
-import { showNotification } from '@mantine/notifications';
+import { showNotification, cleanNotifications } from '@mantine/notifications';
 import { IPapaparseResult, IPapaparseClaimsResult } from "../utils/helpers/Papaparse";
 import { useCallback } from "react";
 
 export const useParseClaims = () => {
-
-  const onClaimsParseSuccess = useCallback(() => {
-    // TODO-FIX: Notifications are rendered outside the viewport
-    showNotification({
-      title: 'Loading...',
-      message: 'Analysing claims records',
-    });
-  }, []);
-
-  const onClaimsParseError = useCallback(() => {
+  const onError = useCallback(() => {
+    cleanNotifications();
     showNotification({
       title: 'Error',
       message: 'Failed to parse claims, please upload a valid file',
+      variant: 'error',
+      color: "red"
     });
   }, []);
 
@@ -27,20 +21,22 @@ export const useParseClaims = () => {
         header: true,
         skipEmptyLines: true,
         complete: (results: IPapaparseResult) => { 
-          onClaimsParseSuccess();
           const mappedErrors = results.errors.map(({ row, code, message}) => {
             const errorMessage = (row ? `Row: ${row} => ` : "") + `Code= "${code}";  Message= ${message}.`;
             return errorMessage;
           });
+          if (results.errors.length > 0) {
+            onError();
+          }
           complete({...results, errors: mappedErrors });
         },
         error: () => {
-          onClaimsParseError();
+          onError();
           error();
         } 
       });
     });
-  },[onClaimsParseSuccess, onClaimsParseError]);
+  },[onError]);
 
   return {
     parseClaims,

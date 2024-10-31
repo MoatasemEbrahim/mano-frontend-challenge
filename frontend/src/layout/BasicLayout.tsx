@@ -32,7 +32,7 @@ export default function BasicLayout() {
 
       <AppShell.Navbar p="md">
         <ul className="list-disc p-4">
-          {/* TODO: highlight the active link */}
+          {/* TODO(enhancement): highlight the active link */}
           <li><Link to="/manage-claims">Manage claims</Link></li>
           <li><Link to="/list-mrf-files">List available claims</Link></li>
         </ul>

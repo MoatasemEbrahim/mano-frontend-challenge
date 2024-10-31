@@ -33,7 +33,7 @@ const FileUploader: FC<IFileUploaderProps> = ({
   };
 
   const handleUploadButtonClick = () => {
-    onUpload(file)
+    onUpload(file);
   }
 
   return (

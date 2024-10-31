@@ -1,28 +1,28 @@
 export interface IClaimRecord {
-  claimId: string;
-  subscriberId: string;
-  memberSequence: string;
-  claimStatus: string;
-  billed: string;
-  allowed: string;
-  paid: string;
-  paymentStatusDate: string; // date as ISO string
-  serviceDate: string;       // date as ISO string
-  receivedDate: string;      // date as ISO string
-  entryDate: string;         // date as ISO string
-  processedDate: string;     // date as ISO string
-  paidDate: string;          // date as ISO string
-  paymentStatus: string;
-  groupName: string;
-  groupId: string;
-  divisionName: string;
-  divisionId: string;
-  plan: string;
-  planId: string;
-  placeOfService: string;
-  claimType: string;
-  procedureCode: string;
-  memberGender: string;
-  providerId: string;
-  providerName: string;
+  "Claim ID": string;
+  "Subscriber ID": string;
+  "Member Sequence": string;
+  "Claim Status": string;
+  "Billed": string;
+  "Allowed": string;
+  "Paid": string;
+  "Payment Status Date": string; // date as ISO string
+  "Service Date": string;       // date as ISO string
+  "Received Date": string;      // date as ISO string
+  "Entry Date": string;         // date as ISO string
+  "Processed Date": string;     // date as ISO string
+  "Paid Date": string;          // date as ISO string
+  "Payment Status": string;
+  "Group Name": string;
+  "Group ID": string;
+  "Division Name": string;
+  "Division ID": string;
+  "Plan": string;
+  "Plan ID": string;
+  "Place of Service": string;
+  "Claim Type": string;
+  "Procedure Code": string;
+  "Member Gender": string;
+  "Provider ID": string;
+  "Provider Name": string;
 };

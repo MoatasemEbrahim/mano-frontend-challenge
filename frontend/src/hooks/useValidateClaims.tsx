@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { ClaimSchema } from '../utils/helpers/claims';
 import { IClaimRecord } from '../types/claim'
+import { showNotification, cleanNotifications } from '@mantine/notifications';
 
 export const useValidateClaims = () => {
 
@@ -18,6 +19,17 @@ export const useValidateClaims = () => {
         validationErrors.push(errorMessage);
       }
     });
+
+    if (validationErrors.length > 0) {
+      cleanNotifications();
+      showNotification({
+        title: 'Error',
+        message: 'Claims validation failed, please upload a valid file',
+        variant: 'error',
+        color: "red"
+      });
+    }
+
     return { data: validatedClaims, errors: validationErrors}
   }, []);
 

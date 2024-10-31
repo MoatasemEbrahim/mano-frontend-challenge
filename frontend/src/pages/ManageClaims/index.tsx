@@ -1,9 +1,10 @@
 import ClaimUploadErrors from './ClaimUploadErrors';
 import FileUploader from '../../components/FileUploader';
 import { useUploadClaims } from '../../hooks/useUploadClaims';
+import ClaimsTable from './ClaimsTable';
 
 const ManageClaims = () => {
-  const { uploadClaims, isUploading, errors } = useUploadClaims();
+  const { uploadClaims, uploadedClaims, isUploading, errors } = useUploadClaims();
 
   return (
     <div>
@@ -18,6 +19,9 @@ const ManageClaims = () => {
         />
       </div>
       <ClaimUploadErrors errors={errors} />
+      {uploadedClaims.length > 0 && (
+        <ClaimsTable claims={uploadedClaims} isLoading={false} />
+      )}
     </div>
   )
 }
