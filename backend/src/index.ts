@@ -11,6 +11,7 @@ app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
+// TODO(enhancement): Add swagger for the APIs
 app.get('/api/mrf', listMRF);
 app.post('/api/mrf', creatMRF);
 
