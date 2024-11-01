@@ -27,10 +27,7 @@ export const listMRF = async (ctx: Context) => {
       files.map(async (file) => {
         const filePath = path.join(STORAGE_DIR, file);
         const content = await fs.readFile(filePath, 'utf-8');
-        return {
-          title: file.replace(".json", ""),
-          data: JSON.parse(content)
-        };
+        return JSON.parse(content);
       })
     );
 

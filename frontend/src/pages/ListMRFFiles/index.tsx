@@ -16,9 +16,9 @@ const ListMRFFiles = () => {
   },[fetchFiles])
 
   const rows = useMemo(() => files.map((file) => (
-    <tr key={file.title}>
-      <td>{file.title}</td>
-      <td>{file.data[0]["Claim Type"]}</td>
+    <tr key={file.reporting_entity_name}>
+      <td>{file.reporting_entity_name}</td>
+      <td>{file.amount}</td>
     </tr>
   )),[files]);
 
@@ -34,8 +34,8 @@ const ListMRFFiles = () => {
               <Table striped highlightOnHover>
                 <thead>
                   <tr>
-                    <th className='text-start'>File</th>
-                    <th className='text-start'>Claim Type</th>
+                    <th className='text-start'>File name</th>
+                    <th className='text-start'>Amount</th>
                   </tr>
                 </thead>
                 <tbody>{rows}</tbody>

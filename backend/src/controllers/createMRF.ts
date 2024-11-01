@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { validateClaim } from '../helpers/claimValidation.js';
-import { groupByKeys } from "../helper/array.js";
+import { generateMRFsContent } from "../helper/mrf.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,11 +25,11 @@ export const creatMRF = async (ctx: Context) => {
       return ctx.json({ message: 'Invalid claims payload', errors }, 400);
     }
 
-    const mrfRecords = groupByKeys(data, ["Provider Name", "Procedure Code", "Place of Service", "Claim Type"])
-    for (const [name, value] of mrfRecords) {
+    const generatedMRFs = generateMRFsContent(data, ["Provider Name", "Procedure Code", "Place of Service", "Claim Type"]);
+    for (const [name, value] of generatedMRFs) {
       const filename = `${name}:${Date.now()}.json`;
       const filepath = path.join(STORAGE_DIR, filename);
-      fs.writeFile(filepath, JSON.stringify(data, null, 2), 'utf8');
+      fs.writeFile(filepath, JSON.stringify(value, null, 2), 'utf8');
     }
 
     return ctx.json({ message: 'Data saved successfully' });
