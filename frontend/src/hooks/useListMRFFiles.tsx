@@ -12,7 +12,7 @@ export const useGetMRFFiles = () => {
       const data = await response.json();
       setIsLoadingFiles(false);
       return data;
-    } catch (e) {
+    } catch {
       setIsLoadingFiles(false);
       showNotification({
         title: 'Error',

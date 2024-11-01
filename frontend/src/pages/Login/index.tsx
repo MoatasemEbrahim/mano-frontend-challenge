@@ -4,7 +4,7 @@ import { Button } from '@mantine/core';
 import Logo from "../../components/Logo";
 import { IconCookieMan } from '@tabler/icons-react';
 import { observer } from "mobx-react-lite";
-import { useStore } from "../../stores/StoreContext";
+import { useStore } from "../../stores/useStore";
 
 const Login = observer(() => {
   const { authStore } = useStore();

@@ -31,7 +31,7 @@ export const useGenerateMRFFiles = () => {
       })
       navigate("/mrf-files");
 
-    } catch (e) {
+    } catch {
       updateNotification({
         id: "generateFiles",
         title: 'Error',
