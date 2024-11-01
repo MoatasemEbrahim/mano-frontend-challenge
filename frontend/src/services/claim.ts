@@ -1,7 +1,9 @@
-import { IClaimRecord } from "../types/claim"
+import { IClaimRecord } from "../types/claim";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const createMRF = (payload: IClaimRecord[]) => 
-  fetch("http://localhost:8080/api/mrf", {
+  fetch(`${API_URL}/api/mrf`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +13,7 @@ export const createMRF = (payload: IClaimRecord[]) =>
 ;
 
 export const listMRF = () =>
-  fetch("http://localhost:8080/api/mrf", {
+  fetch(`${API_URL}/api/mrf`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
