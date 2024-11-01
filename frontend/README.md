@@ -23,7 +23,7 @@ This is the frontend portion of the Mano Health Code Challenge, built using Reac
 
 1. **Create .env file and add the backend API URL in it:**
    ```bash
-    mv ./.env.example .env
+    cp ./.env.example .env
 
 2. **Modify the the .env file:**
 Add the backend API URL based on the backend configuration (by default http://localhost:8080)
